@@ -59,15 +59,15 @@ def lambda_handler(event, context):
         
                 if 'ERROR' in log_message:
                     zabbix_packet = ZabbixPacket()
-                    zabbix_packet.add(host='NTAK report', key='ntak.error', value=log_message)
-                    zabbix_sender = ZabbixSender(server='213.222.190.161', port=10051)
+                    zabbix_packet.add(host='<Zabbix Host Name>', key='<Host Key>', value=log_message)
+                    zabbix_sender = ZabbixSender(server='<Zabbix Server IP>', port=10051)
                     status = zabbix_sender.send(zabbix_packet.encode())
                     print("Error message sent to Zabbix")
         
-                elif 'daily_close' in log_message:
+                elif '<Other Use Case>' in log_message:
                     zabbix_packet = ZabbixPacket()
-                    zabbix_packet.add(host='NTAK report', key='ntak.report', value=log_message)
-                    zabbix_sender = ZabbixSender(server='213.222.190.161', port=10051)
+                    zabbix_packet.add(host='<Zabbix Host Name>', key='<Host key>', value=log_message)
+                    zabbix_sender = ZabbixSender(server='<Zabbix server IP>', port=10051)
                     status = zabbix_sender.send(zabbix_packet.encode())
                     print("Daily close report message sent to Zabbix")
         
